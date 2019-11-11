@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+
+{% load bootstrap4 %}
+
+{% block body %}
+
+  {% if request.resolver_match.url_name == 'create_modelform' %}
+    <h1>Create</h1>
+  {% else %}
+    <h1>Update</h1>
+  {% endif %}
+
+  <form action="" method="POST">
+    {% csrf_token %}
+    {% bootstrap_form form %}
+    {% buttons submit='Submit' %}{% endbuttons %}
+  </form>
+
+{% endblock %}
