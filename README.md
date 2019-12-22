@@ -1,6 +1,6 @@
-# Easy forms in Django
+# README
 
-### Load bootstrap4 with pip install
+## Load bootstrap4 with pip
 
 ```bash
 $ pip install django-bootstrap4
@@ -14,18 +14,15 @@ INSTALLED_APPS = [
 
 ```django
 {% extends 'base.html' %}
-
 {% load bootstrap4 %}
 ```
 
-### Forms in Django
+## Form class in django
 ```python
 from django import forms
 
 
-# forms.Form class
 class MovieForm(forms.Form):
-
     title_en = forms.CharField(
                     max_length=100,
                     label='English title',
@@ -35,7 +32,6 @@ class MovieForm(forms.Form):
                         }
                     )
                 )
-
     open_date = forms.DateField(
                     widget=forms.DateInput(
                         attrs={
@@ -45,9 +41,7 @@ class MovieForm(forms.Form):
                 )
 
 
-# forms.ModelForm class
 class CommentForm(forms.ModelForm):
-
     class Meta:
         model = Comment
         fields = ('comment', )
@@ -55,12 +49,10 @@ class CommentForm(forms.ModelForm):
 
 ```django
 {% extends 'base.html' %}
-
 {% load bootstrap4 %}
 
 {% block body %}
 
-  <!-- url_name defines linked url -->
   {% if request.resolver_match.url_name == 'create_modelform' %}
     <h1>Create</h1>
   {% else %}
@@ -75,3 +67,4 @@ class CommentForm(forms.ModelForm):
 
 {% endblock %}
 ```
+
