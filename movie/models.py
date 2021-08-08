@@ -1,10 +1,7 @@
 from django.db import models
 
-# Create your models here.
-
 
 class Movie(models.Model):
-
     title = models.CharField(max_length=50)
     title_en = models.CharField(max_length=100)
     audience = models.IntegerField()
@@ -17,7 +14,6 @@ class Movie(models.Model):
 
 
 class Comment(models.Model):
-
     movie = models.ForeignKey(Movie, on_delete=models.CASCADE)
     comment = models.CharField(max_length=100)
 
