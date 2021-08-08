@@ -1,4 +1,4 @@
-"""form URL Configuration
+'''form URL Configuration
 
 The `urlpatterns` list routes URLs to views. For more information please see:
     https://docs.djangoproject.com/en/2.2/topics/http/urls/
@@ -12,7 +12,7 @@ Class-based views
 Including another URLconf
     1. Import the include() function: from django.urls import include, path
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
-"""
+'''
 from django.contrib import admin
 from django.urls import path, include
 
@@ -20,7 +20,7 @@ from movies import views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    
+
     path('movies/', include('movies.urls')),
 
     # set root page same as index page
