@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect, get_object_or_404
 
-from .forms import MovieForm, MovieModelForm, CommentForm
+from .forms import MovieModelForm, CommentForm
 from .models import Movie, Comment
 
 
