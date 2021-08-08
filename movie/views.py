@@ -34,7 +34,7 @@ def create(request):
 
     if request.method == 'POST':
         form = MovieForm(request.POST)
-    
+
         if form.is_valid():
             movie = Movie()
 
@@ -50,7 +50,7 @@ def create(request):
 
             movie.save()
 
-            return redirect('movies:index')
+            return redirect('movie:index')
     else:
         form = MovieForm()
 
@@ -69,11 +69,11 @@ def create_model_form(request):
         if form.is_valid():
             movie = form.save()
 
-            return redirect('movies:detail', movie.id)
+            return redirect('movie:detail', movie.id)
     else:
         form = MovieModelForm()
 
-    context ={
+    context = {
         'form': form,
     }
 
@@ -81,16 +81,16 @@ def create_model_form(request):
 
 
 def delete(request, movie_id):
-    
+
     movie = get_object_or_404(Movie, id=movie_id)
 
     if request.method == 'POST':
         movie.delete()
 
-        return redirect('movies:index')
+        return redirect('movie:index')
     else:
 
-        return redirect('movies:detail', movie_id)
+        return redirect('movie:detail', movie_id)
 
 
 def update(request, movie_id):
@@ -114,7 +114,7 @@ def update(request, movie_id):
 
             movie.save()
 
-            return redirect('movies:detail', movie_id)
+            return redirect('movie:detail', movie_id)
     else:
         form = MovieForm(initial=movie.__dict__)
 
@@ -135,10 +135,10 @@ def update_model_form(request, movie_id):
         if form.is_valid():
             form.save()
 
-            return redirect('movies:detail', movie_id)
+            return redirect('movie:detail', movie_id)
     else:
         form = MovieModelForm(instance=movie)
-    
+
     context = {
         'form': form,
     }
@@ -159,4 +159,4 @@ def comment_create(request, movie_id):
 
             comment.save()
 
-            return redirect('movies:detail', movie_id)
+            return redirect('movie:detail', movie_id)

@@ -5,7 +5,7 @@
 {% block body %}
 
   <h1>Detail</h1>
-  
+
   <p>Title : {{movie.title}}</p>
   <p>English title : {{movie.title_en}}</p>
   <p>Audience : {{movie.audience}}</p>
@@ -16,29 +16,29 @@
   <p>Poster url : {{movie.poster_url}}</p>
   <p>Description : {{movie.description}}</p>
 
-  <a href="{% url 'movies:index' %}">Go back</a>
-  <a href="{% url 'movies:update_modelform' movie.id %}">Edit</a>
-  
-  <form action="{% url 'movies:delete' movie.id %}" method="POST">
+  <a href="{% url 'movie:index' %}">Go back</a>
+  <a href="{% url 'movie:update_modelform' movie.id %}">Edit</a>
+
+  <form action="{% url 'movie:delete' movie.id %}" method="POST">
     {% csrf_token %}
     <input type="submit" value="Delete">
   </form>
 
   {% comment %}
-    <a href="{% url 'movies:delete' movie.id %}">Delete</a>
-    <a href="{% url 'movies:update' movie.id %}">Edit</a>
+    <a href="{% url 'movie:delete' movie.id %}">Delete</a>
+    <a href="{% url 'movie:update' movie.id %}">Edit</a>
   {% endcomment %}
-  
+
   <hr>
 
-  <form action="{% url 'movies:comment_create' movie.id %}" method="POST">
+  <form action="{% url 'movie:comment_create' movie.id %}" method="POST">
     {% csrf_token %}
     {% bootstrap_form comment_form %}
     {% buttons submit='Submit' %}{% endbuttons %}
   </form>
 
   <hr>
-  
+
   {% for comment in movie.comment_set.all %}
     <p>{{comment.comment}}</p>
   {% endfor %}

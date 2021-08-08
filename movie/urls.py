@@ -1,7 +1,7 @@
 from django.urls import path
 from . import views
 
-app_name = 'movies'
+app_name = 'movie'
 
 urlpatterns = [
     path('', views.index, name='index'),
@@ -14,7 +14,9 @@ urlpatterns = [
     path('<int:movie_id>/update/', views.update, name='update'),
 
     path('create-model-form/', views.create_model_form, name='create_modelform'),
-    path('<int:movie_id>/update-model-form', views.update_model_form, name='update_modelform'),
+    path('<int:movie_id>/update-model-form',
+         views.update_model_form, name='update_modelform'),
 
-    path('<int:movie_id>/comments/create/', views.comment_create, name='comment_create'),
+    path('<int:movie_id>/comments/create/',
+         views.comment_create, name='comment_create'),
 ]

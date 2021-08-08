@@ -18,13 +18,13 @@
 
 <body>
 
-  <a href="{% url 'movies:index' %}">Home</a>
+  <a href="{% url 'movie:index' %}">Home</a>
 
   {% comment %}
-    <a href="{% url 'movies:create' %}">Write</a>
+    <a href="{% url 'movie:create' %}">Write</a>
   {% endcomment %}
 
-  <a href="{% url 'movies:create_modelform' %}">Write</a>
+  <a href="{% url 'movie:create_modelform' %}">Write</a>
 
   <div class="container">
     {% block body %}

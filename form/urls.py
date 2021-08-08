@@ -16,13 +16,11 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 
-from movies import views
+from movie import views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
 
-    path('movies/', include('movies.urls')),
-
-    # set root page same as index page
     path('', views.index),
+    path('movie/', include('movie.urls')),
 ]
