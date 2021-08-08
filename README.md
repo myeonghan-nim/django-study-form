@@ -1,6 +1,6 @@
-# README
+# Study: form class
 
-## Load bootstrap4 with pip
+## django-bootstrap4
 
 ```bash
 $ pip install django-bootstrap4
@@ -17,28 +17,26 @@ INSTALLED_APPS = [
 {% load bootstrap4 %}
 ```
 
-## Form class in django
+## form and modelform
+
 ```python
 from django import forms
 
+from .models import Movie, Comment
 
-class MovieForm(forms.Form):
-    title_en = forms.CharField(
-                    max_length=100,
-                    label='English title',
-                    widget=forms.TextInput(
-                        attrs={
-                            'placeholder': 'Enter english title',
-                        }
-                    )
-                )
+
+class MovieModelForm(forms.ModelForm):
     open_date = forms.DateField(
-                    widget=forms.DateInput(
-                        attrs={
-                            'type': 'date'
-                        }
-                    )
-                )
+        widget=forms.DateInput(
+            attrs={
+                'type': 'date'
+            }
+        )
+    )
+
+    class Meta:
+        model = Movie
+        fields = '__all__'
 
 
 class CommentForm(forms.ModelForm):
@@ -52,19 +50,15 @@ class CommentForm(forms.ModelForm):
 {% load bootstrap4 %}
 
 {% block body %}
-
   {% if request.resolver_match.url_name == 'create_modelform' %}
-    <h1>Create</h1>
+    <h1>CREATE</h1>
   {% else %}
-    <h1>Update</h1>
+    <h1>UPDATE</h1>
   {% endif %}
-
   <form action="" method="POST">
     {% csrf_token %}
     {% bootstrap_form form %}
     {% buttons submit='Submit' %}{% endbuttons %}
   </form>
-
 {% endblock %}
 ```
-
