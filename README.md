@@ -1,4 +1,4 @@
-# Study: form class
+# Study: form
 
 ## django-bootstrap4
 
